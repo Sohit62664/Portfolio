@@ -1,0 +1,8 @@
+Navbar 
+Hero
+About 
+Skills 
+Projects
+Achievement
+Contact
+Footer
