@@ -178,22 +178,22 @@ window.addEventListener("scroll", () => {
 
 
 // ─── 9. Contact Form Feedback ─────────────────────────────────
-const contactForm = document.querySelector(".contact-form");
+// const contactForm = document.querySelector(".contact-form");
 
-if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const btn = contactForm.querySelector("button");
-        btn.textContent = "Message Sent ✓";
-        btn.style.background = "#22c55e";
+// if (contactForm) {
+//     contactForm.addEventListener("submit", (e) => {
+//         e.preventDefault();
+//         const btn = contactForm.querySelector("button");
+//         btn.textContent = "Message Sent ✓";
+//         btn.style.background = "#22c55e";
 
-        setTimeout(() => {
-            btn.textContent = "Send Message";
-            btn.style.background = "#f97316";
-            contactForm.reset();
-        }, 3000);
-    });
-}
+//         setTimeout(() => {
+//             btn.textContent = "Send Message";
+//             btn.style.background = "#f97316";
+//             contactForm.reset();
+//         }, 3000);
+//     });
+// }
 
 
 // ─── 10. Skill Card Stagger Animation ────────────────────────
@@ -202,3 +202,183 @@ const skillCards = document.querySelectorAll(".skill-card");
 skillCards.forEach((card, i) => {
     card.style.transitionDelay = `${i * 0.08}s`;
 });
+
+
+// Gallary 
+
+
+const galleryImages = [
+
+    {
+        src: "Images/Trophy1.png",
+        caption: "Achievement Trophy"
+    },
+
+    {
+        src: "Images/Bangaluru_visit.jpeg",
+        caption: "Bengaluru Visit"
+    },
+
+    {
+        src: "Images/Invoked-certificate.jpeg",
+        caption: "Shikshalokam Hackathon"
+    },
+
+    {
+        src: "Images/Fyrstgen-certigicate.jpeg",
+        caption: "Fyrstgen Hackathon"
+    },
+
+    {
+        src: "Images/vit-Research-certificate.jpeg",
+        caption: "VIT Intra College Research Certificate"
+    },
+
+    {
+        src: "Images/fyrestgen.jpg",
+        caption: "Fyrstgen"
+    },
+
+    {
+        src: "Images/fyrestgen-certificate.jpg",
+        caption: "Fyrstgen Certificate"
+    },
+
+    {
+        src: "Images/shikshalokam.jpg",
+        caption: "Shikshalokam"
+    },
+
+    {
+        src: "Images/shikshalokam-certificate.jpg",
+        caption: "Shikshalokam Certificate"
+    }
+
+];
+
+
+let currentImage = 0;
+
+
+function openGallery() {
+
+    currentImage = 0;
+
+    document.getElementById("statusGallery").style.display = "flex";
+
+    document.body.style.overflow = "hidden";
+
+    createProgress();
+
+    showImage();
+}
+
+
+function closeGallery() {
+
+    document.getElementById("statusGallery").style.display = "none";
+
+    document.body.style.overflow = "auto";
+}
+
+
+function showImage() {
+
+    document.getElementById("statusImage").src =
+        galleryImages[currentImage].src;
+
+    document.getElementById("statusCaption").innerText =
+        galleryImages[currentImage].caption;
+
+    updateProgress();
+}
+
+
+function nextImage() {
+
+    if (currentImage < galleryImages.length - 1) {
+
+        currentImage++;
+
+        showImage();
+
+    } else {
+
+        closeGallery();
+
+    }
+}
+
+
+function prevImage() {
+
+    if (currentImage > 0) {
+
+        currentImage--;
+
+        showImage();
+    }
+}
+
+
+function createProgress() {
+
+    const container =
+        document.getElementById("statusProgress");
+
+    container.innerHTML = "";
+
+    galleryImages.forEach(() => {
+
+        const bar = document.createElement("div");
+
+        bar.classList.add("progress-item");
+
+        container.appendChild(bar);
+
+    });
+}
+
+
+function updateProgress() {
+
+    const bars =
+        document.querySelectorAll(".progress-item");
+
+    bars.forEach((bar, index) => {
+
+        if (index <= currentImage) {
+
+            bar.classList.add("active");
+
+        } else {
+
+            bar.classList.remove("active");
+
+        }
+
+    });
+}
+
+
+/* Keyboard Controls */
+
+document.addEventListener("keydown", function (event) {
+
+    const gallery =
+        document.getElementById("statusGallery");
+
+    if (gallery.style.display !== "flex")
+        return;
+
+    if (event.key === "ArrowRight")
+        nextImage();
+
+    if (event.key === "ArrowLeft")
+        prevImage();
+
+    if (event.key === "Escape")
+        closeGallery();
+
+});
+

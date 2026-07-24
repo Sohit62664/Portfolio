@@ -377,7 +377,7 @@
 
 
 <!-- Gallery -->
- <section class="gallery-section">
+ <!-- <section class="gallery-section">
 
     <h2 class="section-title">
         Achievement Gallery
@@ -402,12 +402,47 @@
 
     </div>
 
-</section>
+</section> -->
     
+<!-- Achievement Gallery -->
+<section class="gallery-section">
+
+    <h2 class="section-title">Achievement Gallery</h2>
+
+    <button class="gallery-btn" onclick="openGallery()">
+        View Achievement Gallery
+    </button>
+
+</section>
+
+
+<!-- WhatsApp Status Style Gallery -->
+<div id="statusGallery" class="status-gallery">
+
+    <!-- Progress Bars -->
+    <div class="status-progress" id="statusProgress"></div>
+
+    <!-- Close Button -->
+    <button class="status-close" onclick="closeGallery()">×</button>
+
+    <!-- Previous -->
+    <button class="status-nav status-prev" onclick="prevImage()">‹</button>
+
+    <!-- Image -->
+    <div class="status-content">
+        <img id="statusImage" src="" alt="Achievement">
+
+        <div id="statusCaption" class="status-caption"></div>
+    </div>
+
+    <!-- Next -->
+    <button class="status-nav status-next" onclick="nextImage()">›</button>
+
+</div>
 
     <!----------------Contact----------------->
 
-    <section id="contact" class="contact">
+    <!-- <section id="contact" class="contact">
 
         <h2 class="section-title">Contact Me</h2>
 
@@ -463,7 +498,42 @@
 
         </div>
 
-    </section>
+    </section> -->
+    <form class="contact-form"
+      action="https://api.web3forms.com/submit"
+      method="POST">
+
+    <!-- Web3Forms Access Key -->
+    <input type="hidden"
+           name="access_key"
+           value="1c64c82c-bc58-4d7f-854c-1f0fa6c3ca40">
+
+    <!-- Email subject -->
+    <input type="hidden"
+           name="subject"
+           value="New Message From Sohit's Portfolio">
+
+    <input type="text"
+           name="name"
+           placeholder="Your Name"
+           required>
+
+    <input type="email"
+           name="email"
+           placeholder="Your Email"
+           required>
+
+    <textarea name="message"
+              rows="6"
+              placeholder="Your Message"
+              required></textarea>
+
+    <button type="submit">
+        Send Message
+    </button>
+
+</form>
+
 
     <!-----------------------Footer-------------------->
 
